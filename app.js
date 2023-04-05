@@ -59,7 +59,7 @@ grassPlane.rotation.x = -Math.PI / 2;
 scene.add(grassPlane);
 
 var tileTexture = new THREE.TextureLoader().load('tile_texture.jpg');
-var imageTexture = new THREE.TextureLoader().load('VKB.jpg');
+var imageTexture = new THREE.TextureLoader().load('VKB.png');
 
 function createCircularRing(innerRadius, outerRadius, radialSegments, tubularSegments) {
   const ringGeometry = new THREE.TorusGeometry(
