@@ -110,7 +110,7 @@ var globeMaterial = new THREE.MeshPhongMaterial({
 
 var globeMesh = new THREE.Mesh(globeGeometry, globeMaterial);
 globeMesh.position.y = 10;
-// scene.add(globeMesh);
+scene.add(globeMesh);
 
 
 // Load Amity University logo texture
@@ -142,8 +142,8 @@ const numRings = 10;
 const ringGap = 5;
 
 const globePivot = new THREE.Object3D();
-// scene.add(globePivot);
-// globePivot.add(globeMesh);
+scene.add(globePivot);
+globePivot.add(globeMesh);
 
 for (let i = 0; i < numRings; i++) {
   const innerRadius = 14 + i * ringGap;
@@ -162,7 +162,7 @@ const imagePlaneDistance = 10;
 
 const imagePlane = createImagePlane(imagePlaneWidth, imagePlaneHeight, imageTexture);
 imagePlane.position.set(0, globeMesh.position.y + imagePlaneDistance, 0);
-// globePivot.add(imagePlane);
+globePivot.add(imagePlane);
 
 // Position camera and set controls
 camera.position.set(0, 10, 25);
