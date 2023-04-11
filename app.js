@@ -117,19 +117,26 @@ globeMesh.position.y = 10;
 var amityUniversityTexture = new THREE.TextureLoader().load('https://upload.wikimedia.org/wikipedia/en/f/ff/Amity_University_logo.png');
 
 // Set up Amity University logo plane
-var amityLogoGeometry = new THREE.PlaneGeometry(10, 10);
+// ... other code ...
+
+// Set up Amity University logo plane
+const innerRadius = 14;
+const outerRadius = 16;
+const logoWidth = innerRadius * Math.sin(Math.PI / 4); // Fit the logo inside the innermost ring
+const logoHeight = logoWidth;
+
+var amityLogoGeometry = new THREE.PlaneGeometry(logoWidth, logoHeight);
 var amityLogoMaterial = new THREE.MeshBasicMaterial({ map: amityUniversityTexture, transparent: true, side: THREE.DoubleSide });
 var amityLogoMesh = new THREE.Mesh(amityLogoGeometry, amityLogoMaterial);
 
 // ... other code ...
 
-// Add the Amity University logo to the scene
-scene.add(amityLogoMesh);
+// Position the Amity University logo in the center of the smallest ring and parallel to the grassland surface
+amityLogoMesh.position.set(0, 0.01, (innerRadius + outerRadius) / 2);
+amityLogoMesh.rotation.x = Math.PI / 2;
 
-const innerRadius = 14;
-const outerRadius = 16;
-amityLogoMesh.position.set((innerRadius + outerRadius) / 2, 0.01, 0);
-amityLogoMesh.rotation.y = Math.PI / 2;
+// ... other code ...
+
 // Add the circular ring to the scene
 const numRings = 10;
 const ringGap = 5;
