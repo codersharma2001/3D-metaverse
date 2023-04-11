@@ -112,6 +112,24 @@ var globeMesh = new THREE.Mesh(globeGeometry, globeMaterial);
 globeMesh.position.y = 10;
 // scene.add(globeMesh);
 
+
+// Load Amity University logo texture
+var amityUniversityTexture = new THREE.TextureLoader().load('https://upload.wikimedia.org/wikipedia/en/f/ff/Amity_University_logo.png');
+
+// Set up Amity University logo plane
+var amityLogoGeometry = new THREE.PlaneGeometry(10, 10);
+var amityLogoMaterial = new THREE.MeshBasicMaterial({ map: amityUniversityTexture, transparent: true, side: THREE.DoubleSide });
+var amityLogoMesh = new THREE.Mesh(amityLogoGeometry, amityLogoMaterial);
+
+// ... other code ...
+
+// Add the Amity University logo to the scene
+scene.add(amityLogoMesh);
+
+const innerRadius = 14;
+const outerRadius = 16;
+amityLogoMesh.position.set((innerRadius + outerRadius) / 2, 0.01, 0);
+amityLogoMesh.rotation.y = Math.PI / 2;
 // Add the circular ring to the scene
 const numRings = 10;
 const ringGap = 5;
